@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="
+        http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="flex-store" transaction-type="JTA">
+        <class>org.keycloak.quickstart.storage.user.entity.AfmastEntity</class>
+        <class>org.keycloak.quickstart.storage.user.entity.CfmastEntity</class>
+        <class>org.keycloak.quickstart.storage.user.entity.UserLoginEntity</class>
+
+        <properties>
+<!--            <property name="hibernate.dialect" value="io.quarkus.hibernate.orm.runtime.dialect.QuarkusH2Dialect" />-->
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver" />
+            <!-- Sets the name of the datasource to be the same as the datasource name in quarkus.properties-->
+            <property name="hibernate.connection.datasource" value="flex-store" />
+            <property name="javax.persistence.transactionType" value="JTA" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@10.101.0.200:1521:KSSDBTEST" />
+            <property name="hibernate.connection.username" value="HOST"/>
+            <property name="hibernate.connection.password" value="HOST"/>
+            <property name="hibernate.connection.pool_size" value="10"/>
+        </properties>
+    </persistence-unit>
+</persistence>
